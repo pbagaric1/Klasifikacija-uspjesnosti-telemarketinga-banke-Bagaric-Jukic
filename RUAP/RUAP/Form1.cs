@@ -35,18 +35,19 @@ namespace RUAP
                 cbB_housing.Text,
                 cbB_loan.Text,
                 cbB_contact.Text,
-                txtB_day.Text,
+                cbB_day.Text,
                 cbB_month.Text,
                 txtB_duration.Text,
                 txtB_campaign.Text,
                 txtB_pdays.Text,
                 txtB_previous.Text,
-                cbB_outcome.Text,
+                cbB_poutcome.Text,
                 "y"
             };
 
             RequestResponse.InvokeRequestResponseService(data).Wait();
             string predictedClass = getY(RequestResponse.Result);
+            
             foreach (Control c in this.Controls)
             {
                 if (c is TextBox)
@@ -68,7 +69,6 @@ namespace RUAP
             {
                 MessageBox.Show("Client WOULD NOT subscribe to a term deposit");
             }
-         
         }
         private string getY(string output)
         {
@@ -99,6 +99,40 @@ namespace RUAP
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        
+
+        private void hScrollBar1_Scroll_1(object sender, ScrollEventArgs e)
+        {
+            txtB_age.Text = hScrollBar1.Value.ToString();
+
+        }
+
+
+        private void hScrollBar6_Scroll(object sender, ScrollEventArgs e)
+        {
+            txtB_duration.Text = hScrollBar6.Value.ToString();
+        }
+
+        private void hScrollBar2_Scroll(object sender, ScrollEventArgs e)
+        {
+            txtB_balance.Text = hScrollBar2.Value.ToString();
+        }
+
+        private void hScrollBar3_Scroll(object sender, ScrollEventArgs e)
+        {
+            txtB_campaign.Text = hScrollBar3.Value.ToString();
+        }
+
+        private void hScrollBar4_Scroll(object sender, ScrollEventArgs e)
+        {
+            txtB_pdays.Text = hScrollBar4.Value.ToString();
+        }
+
+        private void hScrollBar5_Scroll(object sender, ScrollEventArgs e)
+        {
+            txtB_previous.Text = hScrollBar5.Value.ToString();
         }
 
 
